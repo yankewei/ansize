@@ -70,7 +70,7 @@ if (!file_exists($imageName)) {
 }
 
 $imageResource = createResourceFromImage($imageName);
-$imageResource = imagescale($imageResource, 100);
+$imageResource = imagescale($imageResource, $width);
 
 if ($imageResource === false) {
     printf("Unsupported file type");
