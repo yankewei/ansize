@@ -62,7 +62,9 @@ function rgbToAnsi256(int $r, int $g, int $b): int {
 
 
 $imageName = $argv[1];
-$width = $argv[2];
+
+$width = isset($argv[2]) ? $argv[2] : 100;
+$height = isset($argv[3]) ? $argv[3] : 50;
 
 if (!file_exists($imageName)) {
     printf("%s is not exists", $imageName);
@@ -70,7 +72,7 @@ if (!file_exists($imageName)) {
 }
 
 $imageResource = createResourceFromImage($imageName);
-$imageResource = imagescale($imageResource, $width);
+$imageResource = imagescale($imageResource, $width, $height);
 
 if ($imageResource === false) {
     printf("Unsupported file type");
